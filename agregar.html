@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agregar plato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="app.js" defer></script>
+    <style>
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-800 min-h-screen flex flex-col items-center justify-center p-4">
+
+    <header class="mb-8 text-center">
+        <h1 class="text-3xl font-bold mb-2">Agregar un nuevo plato</h1>
+        <p class="text-gray-600">Completa el formulario para sumar platos al menú</p>
+    </header>
+
+    <main class="bg-gray p-6 rounded-lg shadow w-full max-w-4xl">
+        <!-- Contenedor para las pills de platos -->
+        <div id="platosContainer" class="flex flex-wrap gap-3"></div>
+    </main>
+
+    <!-- Modal oculto -->
+    <div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center hidden">
+        <div id="modalContent"
+            class="bg-white p-6 rounded-2xl shadow-lg w-80 scale-95 opacity-0 transition-transform duration-300 ease-out">
+            <h2 class="text-xl font-bold mb-4">Agregar nuevo plato</h2>
+            <form id="formAgregar">
+                <label class="block mb-2">
+                    Nombre del plato:
+                    <input type="text" id="nombrePlato" class="border p-2 w-full rounded" required>
+                </label>
+                <label class="block mb-4">
+                    Tipo de plato:
+                    <select id="tipoPlato" class="border p-2 w-full rounded">
+                        <option value="plato principal">Plato principal</option>
+                        <option value="pastas">Pastas</option>
+                        <option value="ensalada">Ensalada</option>
+                    </select>
+                </label>
+                <!-- NUEVO: Checkbox de guarnición -->
+                <!-- <label class="block mb-4">
+                    <input type="checkbox" id="guarnicion" class="mr-2">
+                    ¿Incluye guarnición?
+                </label> -->
+                <div class="flex justify-end gap-2">
+                    <button type="button" id="cerrarModal" class="px-3 py-1 bg-gray-300 rounded">Cancelar</button>
+                    <button type="submit" class="px-3 py-1 bg-blue-500 text-white rounded">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer class="mt-6 text-sm text-gray-500 text-center">
+        <a href="index.html" class="underline hover:text-indigo-500">Volver al inicio</a>
+    </footer>
+
+</body>
+
+</html>
